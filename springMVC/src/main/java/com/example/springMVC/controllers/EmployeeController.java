@@ -1,8 +1,7 @@
 package com.example.springMVC.controllers;
 
 import com.example.springMVC.dto.EmployeeDTO;
-import com.example.springMVC.entities.EmployeeEntity;
-import com.example.springMVC.repositories.EmployeeRepository;
+import com.example.springMVC.services.EmployeeService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -11,27 +10,29 @@ import java.util.List;
 @RequestMapping(path = "/employees")
 public class EmployeeController {
 
+    private final EmployeeService employeeService;
 
-    private final EmployeeRepository employeeRepository;
-
-    public EmployeeController(EmployeeRepository employeeRepository) {
-        this.employeeRepository = employeeRepository;
+    public EmployeeController(EmployeeService employeeService) {
+        this.employeeService = employeeService;
     }
 
-
     @GetMapping(path="/{id}")
-    public EmployeeEntity getEmployeeById(@PathVariable Long id){
-        return employeeRepository.findById(id).orElse(null);
+    public EmployeeDTO getEmployeeById(@PathVariable Long id){
+        return employeeService.getEmployeeById(id);
     }
 
     @GetMapping(path="/all")
-    public List<EmployeeEntity> getAllEmployees(){
-        return employeeRepository.findAll();
+    public List<EmployeeDTO> getAllEmployees(){
+        return employeeService.getAllEmployees();
     }
 
     @PostMapping(path = "/create")
-    public EmployeeEntity createEmployee(@RequestBody EmployeeEntity newEmp){
-        return employeeRepository.save(newEmp);
+    public EmployeeDTO createEmployee(@RequestBody EmployeeDTO newEmp){
+        return employeeService.create(newEmp);
     }
 
+    @DeleteMapping(path = "/delete/{id}")
+    public String deleteEmployee(@PathVariable Long id){
+        return employeeService.deleteEmployee(id);
+    }
 }

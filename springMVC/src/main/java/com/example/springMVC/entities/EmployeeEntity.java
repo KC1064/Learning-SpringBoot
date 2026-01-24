@@ -16,6 +16,6 @@ public class EmployeeEntity {
     private String fullName;
     private Integer age;
     private String email;
-    private Boolean isActive;
+    private Boolean active;
     private String dateOfJoining;
 }

@@ -8,21 +8,22 @@ public class EmployeeDTO {
     private String fullName;
     private Integer age;
     private String email;
-    private Boolean isActive;
+    private Boolean active;
     private String dateOfJoining;
+
+    public EmployeeDTO(Long id, String fullName, Integer age, String email, Boolean active, String dateOfJoining) {
+        this.id = id;
+        this.fullName = fullName;
+        this.age = age;
+        this.email = email;
+        this.active = active;
+        this.dateOfJoining = dateOfJoining;
+    }
 
     public EmployeeDTO(){
 
     }
 
-    public EmployeeDTO(Long id, String fullName, Integer age, String email, Boolean isActive, String dateOfJoining) {
-        this.id = id;
-        this.fullName = fullName;
-        this.age = age;
-        this.email = email;
-        this.isActive = isActive;
-        this.dateOfJoining = dateOfJoining;
-    }
 
     public Long getId() {
         return id;
@@ -57,11 +58,11 @@ public class EmployeeDTO {
     }
 
     public Boolean getActive() {
-        return isActive;
+        return active;
     }
 
     public void setActive(Boolean active) {
-        isActive = active;
+        this.active = active;
     }
 
     public String getDateOfJoining() {
