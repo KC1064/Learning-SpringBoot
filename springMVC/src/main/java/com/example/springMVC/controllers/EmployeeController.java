@@ -2,6 +2,7 @@ package com.example.springMVC.controllers;
 
 import com.example.springMVC.dto.EmployeeDTO;
 import com.example.springMVC.services.EmployeeService;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -30,7 +31,7 @@ public class EmployeeController {
     }
 
     @PostMapping(path = "/create")
-    public ResponseEntity<EmployeeDTO> createEmployee(@RequestBody EmployeeDTO newEmp){
+    public ResponseEntity<EmployeeDTO> createEmployee(@RequestBody @Valid EmployeeDTO newEmp){
         return employeeService.create(newEmp);
     }
 
@@ -41,7 +42,7 @@ public class EmployeeController {
 
     @PutMapping(path = "/{empId}")
     public ResponseEntity<EmployeeDTO> updateEmployee(@PathVariable Long empId,
-                                                      @RequestBody EmployeeDTO employee){
+                                                      @RequestBody @Valid EmployeeDTO employee){
         return employeeService.updateEmployee(empId,employee);
     }
 

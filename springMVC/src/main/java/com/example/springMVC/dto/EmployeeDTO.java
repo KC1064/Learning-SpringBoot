@@ -1,75 +1,41 @@
 package com.example.springMVC.dto;
 
+import com.example.springMVC.annotations.EmployeeRoleValidation;
+import jakarta.validation.constraints.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import java.time.LocalDate;
 import java.util.Date;
 
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class EmployeeDTO {
     private Long id;
+
+    @NotBlank(message = "Name of the employee cannot be blank")
+    @Size(min = 3, max = 10, message = "Number of characters in name should be in the range: [3, 10]")
     private String fullName;
+
+    @NotNull(message = "Age of the employee cannot be blank")
+    @Max(value = 80, message = "Age of Employee cannot be greater than 80")
+    @Min(value = 18, message = "Age of Employee cannot be less than 18")
+
     private Integer age;
+    @NotBlank(message = "Email of the employee cannot be blank")
+    @Email(message = "Email should be a valid email")
     private String email;
+    @AssertTrue(message = "Employee should be active")
     private Boolean active;
+//    @PastOrPresent(message = "DateOfJoining field in Employee cannot be in the future")
     private String dateOfJoining;
 
-    public EmployeeDTO(Long id, String fullName, Integer age, String email, Boolean active, String dateOfJoining) {
-        this.id = id;
-        this.fullName = fullName;
-        this.age = age;
-        this.email = email;
-        this.active = active;
-        this.dateOfJoining = dateOfJoining;
-    }
-
-    public EmployeeDTO(){
-
-    }
-
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getFullName() {
-        return fullName;
-    }
-
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
-    }
-
-    public Integer getAge() {
-        return age;
-    }
-
-    public void setAge(Integer age) {
-        this.age = age;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public Boolean getActive() {
-        return active;
-    }
-
-    public void setActive(Boolean active) {
-        this.active = active;
-    }
-
-    public String getDateOfJoining() {
-        return dateOfJoining;
-    }
-
-    public void setDateOfJoining(String dateOfJoining) {
-        this.dateOfJoining = dateOfJoining;
-    }
+    @NotBlank(message = "Role of the employee cannot be blank")
+//    @Pattern(regexp = "^(ADMIN|USER)$", message = "Role of Employee can either be USER or ADMIN")
+    @EmployeeRoleValidation
+    private String role;
 }

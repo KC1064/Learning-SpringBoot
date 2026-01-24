@@ -4,7 +4,6 @@ import com.example.springMVC.dto.EmployeeDTO;
 import com.example.springMVC.entities.EmployeeEntity;
 import com.example.springMVC.repositories.EmployeeRepository;
 import org.modelmapper.ModelMapper;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ReflectionUtils;

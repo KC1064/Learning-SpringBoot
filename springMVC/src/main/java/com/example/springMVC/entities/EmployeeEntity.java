@@ -18,4 +18,5 @@ public class EmployeeEntity {
     private String email;
     private Boolean active;
     private String dateOfJoining;
+    private String role;
 }
