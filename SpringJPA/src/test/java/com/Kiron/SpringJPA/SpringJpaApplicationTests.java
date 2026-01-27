@@ -22,24 +22,24 @@ class SpringJpaApplicationTests {
 	void contextLoads() {
 	}
 
-    @Test
-    void insert(){
-        ProductEntity product = ProductEntity.builder()
-                .title("Physics Book")
-                .genre("Education")
-                .price(159)
-                .available(true)
-                .build();
+//    @Test
+//    void insert(){
+//        ProductEntity product = ProductEntity.builder()
+//                .title("Physics Book")
+//                .genre("Education")
+//                .price(159)
+//                .available(true)
+//                .build();
+//
+//        ProductEntity savedProduct = productRepository.save(product);
+//        System.out.println(savedProduct);
+//    }
 
-        ProductEntity savedProduct = productRepository.save(product);
-        System.out.println(savedProduct);
-    }
-
-    @Test
-    void getProducts(){
-        Optional<ProductEntity> product = productRepository.findByTitle("Product-1");
-        System.out.println(product);
-    }
+//    @Test
+//    void getProducts(){
+//        Optional<ProductEntity> product = productRepository.findByTitle("Product-1");
+//        System.out.println(product);
+//    }
 
 //    @Test
 //    void multiInsert() {
