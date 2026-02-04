@@ -12,17 +12,17 @@ import lombok.Setter;
 @NoArgsConstructor
 @Entity
 @Table(name = "admissions_table")
-public class AdmissionRecordEntity {
+public class AdmissionRecord {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "admission_id")
     private Long id;
 
-    @Column(name = "admission_fees")
+    @Column(nullable = false)
     private Integer fees;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "student_id", unique = true)
-    private StudentEntity studentEntity;
+    @OneToOne
+    private Student student;
+
 
 }
