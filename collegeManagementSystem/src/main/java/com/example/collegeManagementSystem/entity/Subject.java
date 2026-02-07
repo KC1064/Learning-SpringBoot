@@ -14,21 +14,21 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "subjects_table")
-public class SubjectEntity {
+public class Subject {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "subject_id")
     private Long id;
 
-    @Column(name = "subject_title")
-    private String name;
+    @Column(nullable = false)
+    private String title;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "professor_id")
-    private ProfessorEntity professorEntity;
+    private Professor professor;
 
-    @ManyToMany(mappedBy = "subjectEntityList", fetch = FetchType.LAZY)
-    private List<StudentEntity> studentEntityList;
+
+    @ManyToMany
+    private List<Student> students;
 
 }
